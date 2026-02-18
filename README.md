@@ -59,3 +59,23 @@ Se busca entender la brecha digital a través de la historia en los diferentes p
 ## ⚠️ Limitaciones y Mejoras
 - **Sesgo Temporal:** Los datos históricos mezclados pueden confundir el estado actual. Se recomienda filtrar por años recientes (2020+).
 - **Sesgo de Población:** Las métricas absolutas favorecen a países grandes. Se sugiere normalizar todas las variables a tasas "per cápita" o porcentajes.
+
+# Respuestas a las preguntas planteadas
+
+### 1. ¿Qué tipo de perfiles se pueden identificar?
+A través del modelo **K-Means**, se identificaron tres perfiles claros de desarrollo tecnológico:
+- **Cluster de Alta Conectividad**: Entidades con los niveles más altos en todas las variables, destacando en penetración de internet y suscripciones de banda ancha fija.
+- **Cluster en Desarrollo/Transición**: Países con una adopción sólida de telefonía móvil pero con una infraestructura de internet y banda ancha aún en crecimiento.
+- **Cluster de Baja Conectividad**: Regiones con acceso limitado o nulo, caracterizados por valores cercanos a cero en todas las métricas.
+
+### 2. ¿Qué diferencias clave surgieron entre los modelos?
+- **K-Means**: Fue el más efectivo para segmentar la población en niveles socio-tecnológicos definidos, creando grupos basados en la distancia a los centroides.
+- **DBSCAN**: Se centró en la densidad de los datos. Su principal diferencia fue la capacidad de identificar **ruido**, aunque es más difícil de configurar para datasets con densidades muy variadas.
+- **PCA**: PCA mostró una separación lineal clara que facilitó la interpretación global
+- **t-SNE**: t-SNE reveló estructuras locales más complejas y la cohesión interna de los clusters.
+
+### 3. ¿Qué limitaciones encontraron y cómo las abordarían?
+- **Limitación de Serie Temporal**: El dataset mezcla datos de 1980 con datos de 2020. Un país puede estar en el "Cluster de Baja Conectividad" en 1990 y en "Líderes" en 2020, lo que complica el perfilamiento estático. 
+  - *Solución*: Filtrar el análisis para el año 2020 exclusivamente para entender la brecha digital actual.
+- **Escala de Población**: La cantidad ed usuarios de internet beneficia a países muy poblados.
+  - *Solución*: Utilizar únicamente variables relativas porcentajes o tasas por cada 100 habitantes para que el tamaño de la población no distorsione el perfil tecnológico.
